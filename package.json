@@ -1,0 +1,21 @@
+{
+  "name": "dealsnest",
+  "version": "1.0.0",
+  "description": "Affiliate marketing platform - Add links, earn commissions",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "affiliate",
+    "marketing",
+    "deals",
+    "amazon",
+    "ebay",
+    "flipkart",
+    "commission"
+  ],
+  "author": "DealsNest",
+  "license": "MIT"
+}
