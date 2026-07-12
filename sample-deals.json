@@ -1,0 +1,19 @@
+{
+  "sampleDeals": [
+    {
+      "id": 1626090000,
+      "title": "Premium Product Deal",
+      "description": "Exclusive Amazon deal - Get amazing discounts on premium products. Limited time offer for our valued customers.",
+      "platform": "amazon",
+      "category": "electronics",
+      "originalPrice": 99.99,
+      "discountedPrice": 49.99,
+      "affiliateLink": "https://link.amazon/B034FAqua",
+      "imageUrl": "https://via.placeholder.com/280x200?text=Amazon+Deal",
+      "commissionRate": 5.5,
+      "createdAt": "2026-07-12T03:57:00Z",
+      "clicks": 0,
+      "conversions": 0
+    }
+  ]
+}
