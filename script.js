@@ -2,19 +2,39 @@
 let deals = JSON.parse(localStorage.getItem('deals')) || [];
 let analytics = JSON.parse(localStorage.getItem('analytics')) || { clicks: 0, conversions: 0, earnings: 0 };
 
+// Your Affiliate IDs - UPDATE THESE WITH YOUR IDs
+const affiliateIDs = {
+    amazon: 'tarun010a-21',
+    ebay: '',
+    flipkart: '',
+    aliexpress: ''
+};
+
 // Form submission
 document.getElementById('linkForm').addEventListener('submit', function(e) {
     e.preventDefault();
+
+    const platform = document.getElementById('platform').value;
+    let affiliateLink = document.getElementById('affiliateLink').value;
+
+    // Auto-format Amazon links with affiliate ID
+    if (platform === 'amazon' && affiliateIDs.amazon) {
+        if (!affiliateLink.includes('tag=')) {
+            // If it's an Amazon product link without tag, add it
+            const separator = affiliateLink.includes('?') ? '&' : '?';
+            affiliateLink = affiliateLink + separator + 'tag=' + affiliateIDs.amazon;
+        }
+    }
 
     const newDeal = {
         id: Date.now(),
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
-        platform: document.getElementById('platform').value,
+        platform: platform,
         category: document.getElementById('category').value,
         originalPrice: parseFloat(document.getElementById('originalPrice').value) || 0,
         discountedPrice: parseFloat(document.getElementById('discountedPrice').value) || 0,
-        affiliateLink: document.getElementById('affiliateLink').value,
+        affiliateLink: affiliateLink,
         imageUrl: document.getElementById('imageUrl').value || 'https://via.placeholder.com/280x200?text=Deal',
         commissionRate: parseFloat(document.getElementById('commissionRate').value) || 0,
         createdAt: new Date().toISOString(),
@@ -25,7 +45,7 @@ document.getElementById('linkForm').addEventListener('submit', function(e) {
     deals.push(newDeal);
     localStorage.setItem('deals', JSON.stringify(deals));
 
-    alert('Deal added successfully!');
+    alert('✅ Deal added successfully!\\n\\nAmazon ID: ' + affiliateIDs.amazon);
     this.reset();
     displayDeals();
     updateDashboard();
